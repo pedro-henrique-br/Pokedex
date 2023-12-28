@@ -1,0 +1,71 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.nav {
+  height: 20vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background: rgb(81, 80, 81) ;
+}
+
+#pokemon-logo {
+  height: 400px;
+}
+
+
+#pokebola-icon {
+  height: 50px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.search-pokemon {
+  display: flex;
+  align-items: center;
+}
+
+.pokemon-cards {
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px;
+  display: flex;
+}
+
+.pokemon-card {
+  background: rgb(208, 208, 208);
+  border-radius: 16px;
+  height: 400px;
+  width: 400px;
+}
+
+.pokemon-card {
+  margin: 20px;
+}
+
+.pokemon-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#icon-pokemon {
+  height: 300px;
+}
