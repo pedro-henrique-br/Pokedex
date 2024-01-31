@@ -105,13 +105,12 @@ body {
 }
 
 .pokemon-card img {
+  image-rendering: pixelated;
   animation-duration: 0.7s;
   margin-bottom: 160px;
   height: 100px;
   position: absolute;
 }
-
-
 
 @keyframes zoom {
   to {
@@ -169,7 +168,11 @@ body {
 }
 
 .aside-info img {
-  height: 150px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  max-width: 350px;
+  height: 22vh;
+  object-fit: cover;
   margin-top: -80px;
 }
 
@@ -188,15 +191,22 @@ body {
   margin-top: 10px;
 }
 
+.aside-info .type p {
+  width: 80px;
+  color: #000000;
+  background-color: #d3d3d3;
+  margin-top: 10px;
+}
+
 .aside-info #pokedex-entry {
   margin-top: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 800;
 }
 
 .aside-info #pokemon-entry {
   margin-top: 5px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #858585;
 }

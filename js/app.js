@@ -7,20 +7,25 @@ const asideInfo = document.getElementsByClassName("aside-info")
 const body = document.getElementsByTagName("body")
 
 const typeColors = {
-  fire: '#FDDFDF',
-  grass: '#DEFDE0',
-  electric: '#FCF7DE',
-  water: '#DEF3FD',
-  ground: '#f4e7da',
-  rock: '#d5d5d4',
-  fairy: '#fceaff',
-  poison: '#98d7a5',
-  bug: '#f8d5a3',
-  dragon: '#97b3e6',
-  psychic: '#eaeda1',
-  flying: '#F5F5F5',
-  fighting: '#E6E0D4',
-  normal: '#F5F5F5'
+  normal: '#BCBCAC',
+  fighting: '#BC5442',
+  flying: '#669AFF',
+  poison: '#AB549A',
+  ground: '#DEBC54',
+  rock: '#BCAC66',
+  bug: '#ABBC1C',
+  ghost: '#6666BC',
+  steel: '#ABACBC',
+  fire: '#FF421C',
+  water: '#2F9AFF',
+  grass: '#78CD54',
+  electric: '#FFCD30',
+  psychic: '#FF549A',
+  ice: '#78DEFF',
+  dragon: '#7866EF',
+  dark: '#785442',
+  fairy: '#FFACFF',
+  shadow: '#0E2E4C'
 }
 
 const mainTypes = Object.keys(typeColors)
@@ -98,7 +103,7 @@ const createPokemonCard = (poke) => {
 
   const getPokemonsAside = async (pokemon) => {
     const data = await getPokemons(pokemon)
-    return data()
+    return data
   }
   
   const createAside = (poke) => {
@@ -106,6 +111,22 @@ const createPokemonCard = (poke) => {
     getPokemonsAside(pokemonId)
 
     const pokemonGif = poke["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
+
+    const pokemonWeight = poke.weight
+
+    const pokemonHeight = poke.height
+
+    const abilities_1 = poke.abilities[0].ability.name
+    const abilities_2 = poke.abilities[1].ability.name
+
+    const statsData = new Object (poke.stats)
+
+
+    statsData.forEach(stats => {
+      console.log(stats.stat.name)
+      console.log(stats.base_stat)
+    });
+
 
     const searchNav = document.getElementById("search-nav")
 
@@ -130,14 +151,14 @@ const createPokemonCard = (poke) => {
         <h4 id="pokedex-entry">Pokemon Entry</h4>
         <p id="pokemon-entry">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
         <div class="height-and-Weight">
-          <div class="Height"><h4>Height</h4><p>0.7m</p></div>
-          <div class="weight"><h4>Weight</h4><p>6.9kg</p></div>
+          <div class="Height"><h4>Height</h4><p>${pokemonHeight}${`m`}</p></div>
+          <div class="weight"><h4>Weight</h4><p>${pokemonWeight}${` `+ `kg`}</p></div>
         </div>
         <h4>Abilities</h4>
         <div class="Abilities-container">
           <div class="abilities">
-            <p id="abilities">Overgrow</p>
-            <p id="abilities">Chlorophyll</p>
+            <p id="abilities">${abilities_1}</p>
+            <p id="abilities">${abilities_2}</p>
           </div>
         </div>
         <div class="stats-title"><h4>Stats</h4>
