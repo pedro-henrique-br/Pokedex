@@ -6,23 +6,24 @@
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/app.js" defer></script>
   <title>Pokedex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
   <img id="pokeball-img" src="/src/pokeball-icon.png" alt="Pokeball img">
   <nav class="nav">
-    <div class="search-nav">
+    <div class="search-nav" id="search-nav">
       <input id="search-pokemon" class="search-pokemon" type="text" placeholder="Search your Pokemon">
       <img id="lupa-img" src="/src/lupa-img.png">
     </div>
   </nav>
   <main>
-    <div id="card-container">
-    </div>
+    <div id="card-container"></div>
   </main>
   <div id="aside" class="aside">
     <img id="close-icon" src="/src/close-icon.png" alt="Close Icon">
-    <div class="aside-info">
-    </div>
+    <div class="aside-info"></div>
   </div>
 </body>
 </html>

@@ -4,7 +4,7 @@ const pokemonCardContainer = document.getElementById("card-container")
 const aside = document.getElementById("aside")
 const closeBtn = document.getElementById("close-icon")
 const asideInfo = document.getElementsByClassName("aside-info")
-
+const body = document.getElementsByTagName("body")
 
 const typeColors = {
   fire: '#FDDFDF',
@@ -107,6 +107,15 @@ const createPokemonCard = (poke) => {
 
     const pokemonGif = poke["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
 
+    const searchNav = document.getElementById("search-nav")
+
+    setTimeout( () => {
+      const backgroundColor = color
+      searchNav.style.display = "none"
+      document.body.style.background = backgroundColor
+      pokemonCardContainer.style.opacity = "0"
+    }, 100)
+    
     const asideContainer = document.createElement("div")
     asideContainer.classList.add("aside-info")
 
@@ -147,10 +156,13 @@ const createPokemonCard = (poke) => {
     asideContainer.innerHTML = pokemonInnerHtml
 
     aside.appendChild(asideContainer)
-    
+
     closeBtn.addEventListener("click", () => {
       aside.classList.remove("active")
       asideContainer.innerHTML = ``
+      document.body.style.background = ``
+      searchNav.style.display = "flex"
+      pokemonCardContainer.style.opacity= "1" 
     })
   }
 
