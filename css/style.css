@@ -145,8 +145,7 @@ body {
   margin: 10px 5px 0px 5px;
   height: 30px;
   width: 60px;
-  color: rgb(0, 0, 0);
-  background: #ffffff;
+  color: rgb(27, 27, 27);
   font-size: 0.9rem;
 }
 
@@ -158,7 +157,7 @@ body {
   position: fixed;
   width: 100vw;
   height:100vh;
-  background: #FFFFFF;
+  background: #ffffff;
 }
 
 .aside-info {

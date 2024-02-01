@@ -11,6 +11,7 @@ const typeColors = {
   fighting: '#BC5442',
   flying: '#669AFF',
   poison: '#AB549A',
+  grass: '#78CD54',
   ground: '#DEBC54',
   rock: '#BCAC66',
   bug: '#ABBC1C',
@@ -18,7 +19,6 @@ const typeColors = {
   steel: '#ABACBC',
   fire: '#FF421C',
   water: '#2F9AFF',
-  grass: '#78CD54',
   electric: '#FFCD30',
   psychic: '#FF549A',
   ice: '#78DEFF',
@@ -30,7 +30,7 @@ const typeColors = {
 
 const mainTypes = Object.keys(typeColors)
 
-const pokemonCount = 1025 
+const pokemonCount = 1025  
 
 const getPokemons = async (id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`
@@ -51,18 +51,17 @@ const createPokemonCard = (poke) => {
   card.classList.add("pokemon-card")
   
   const pokemonImg = poke.sprites.front_default
-
+  
   const pokemonName = poke.forms[0].name
-
+  
   const pokemonId = poke.id
   
   const pokemonType = poke.types.map(type => type.type.name)
   
-  const type = mainTypes.find(type => pokemonType.indexOf(type) > -1)
-  
-  const color = typeColors[type]
-  
-  card.style.background = color
+  const backgroundColor = typeColors[pokemonType[0]]
+
+  const color_1 = typeColors[pokemonType[0]]   
+  const color_2 = typeColors[pokemonType[1]]   
   
   let pokemonInnerHtml = `
   <div class="pokemon-card">
@@ -70,8 +69,8 @@ const createPokemonCard = (poke) => {
   <p>N° ${pokemonId}</p>
   <h4>${pokemonName}</h4>
   <div class="type">
-  <p>${pokemonType[0]}</p>
-  <p>${pokemonType[1]}</p>
+  <p style="opacity: background: ${color_1}">${pokemonType[0]}</p>
+  <p style="background: ${color_2}">${pokemonType[1]}</p>
   </div>
   `
   
@@ -81,9 +80,10 @@ const createPokemonCard = (poke) => {
     <p>N° ${pokemonId}</p>
     <h4>${pokemonName}</h4>
     <div class="type">
-    <p>${pokemonType[0]}</p>
-    <p>${pokemonType[1]}</p>
-    </div>`
+    <p style="background: ${color_1}">${pokemonType[0]}</p>
+    <p style="background: ${color_2}">${pokemonType[1]}</p>
+    </div>
+    `
     
   } else {
     pokemonInnerHtml = `
@@ -91,16 +91,15 @@ const createPokemonCard = (poke) => {
     <p>N° ${pokemonId}</p>
     <h4>${pokemonName}</h4>
     <div class="type">
-    <p>${pokemonType[0]}</p>
+    <p style="background: ${color_1}">${pokemonType[0]}</p>
     </div>
     </div>`
-    
   }
   
   card.innerHTML = pokemonInnerHtml
   
   pokemonCardContainer.appendChild(card)
-
+  
   const getPokemonsAside = async (pokemon) => {
     const data = await getPokemons(pokemon)
     return data
@@ -131,7 +130,6 @@ const createPokemonCard = (poke) => {
     const searchNav = document.getElementById("search-nav")
 
     setTimeout( () => {
-      const backgroundColor = color
       searchNav.style.display = "none"
       document.body.style.background = backgroundColor
       pokemonCardContainer.style.opacity = "0"
@@ -145,8 +143,8 @@ const createPokemonCard = (poke) => {
       <p id="pokemon-id">N° ${pokemonId}</p>
       <h2 id="pokemon-name">${pokemonName}</h2>
       <div class="type">
-        <p>${pokemonType[0]}</p>
-        <p>${pokemonType[1]}</p>
+        <p style="background: ${color_1}">${pokemonType[0]}</p>
+        <p style="background: ${color_2}">${pokemonType[1]}</p>
         </div>
         <h4 id="pokedex-entry">Pokemon Entry</h4>
         <p id="pokemon-entry">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
@@ -173,6 +171,41 @@ const createPokemonCard = (poke) => {
           </div>
         </div>
         </div>`
+
+        if(pokemonType[1] === undefined){
+          pokemonInnerHtml = `
+    <img src="${pokemonGif}" alt="" id="poke-img">
+      <p id="pokemon-id">N° ${pokemonId}</p>
+      <h2 id="pokemon-name">${pokemonName}</h2>
+      <div class="type">
+        <p style="background: ${color_1}">${pokemonType[0]}</p>
+        </div>
+        <h4 id="pokedex-entry">Pokemon Entry</h4>
+        <p id="pokemon-entry">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
+        <div class="height-and-Weight">
+          <div class="Height"><h4>Height</h4><p>${pokemonHeight}${`m`}</p></div>
+          <div class="weight"><h4>Weight</h4><p>${pokemonWeight}${` `+ `kg`}</p></div>
+        </div>
+        <h4>Abilities</h4>
+        <div class="Abilities-container">
+          <div class="abilities">
+            <p id="abilities">${abilities_1}</p>
+            <p id="abilities">${abilities_2}</p>
+          </div>
+        </div>
+        <div class="stats-title"><h4>Stats</h4>
+          <div class="stats">
+            <p>49</p>
+            <p>49</p>
+            <p>49</p>
+            <p>49</p>
+            <p>49</p>
+            <p>49</p>
+            <p>49</p>
+          </div>
+        </div>
+        </div>`
+        }
 
     asideContainer.innerHTML = pokemonInnerHtml
 
