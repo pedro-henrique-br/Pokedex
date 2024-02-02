@@ -63,6 +63,13 @@ const createPokemonCard = (poke) => {
   const color_1 = typeColors[pokemonType[0]]   
   const color_2 = typeColors[pokemonType[1]]   
   
+  if(pokemonId == 649) {
+    console.log("oi")
+  }
+
+
+ 
+  
   if(pokemonType[1]){
     pokemonInnerHtml = `
     <img src="${pokemonImg}" alt="Pokemon Imagem" id="poke-img">
@@ -101,10 +108,10 @@ const createPokemonCard = (poke) => {
     return data
   }
   
-  const getAsideInfo = (poke) => {
+  const getAsideInfo = async (poke) => {
     aside.classList.add("active")
     fetchPokemonsAside(pokemonId)
-    const pokemonEntry = getEntry(pokemonId)
+    const pokemonEntry = await getEntry(pokemonId)
 
     const pokemonGif = poke["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
     
@@ -273,7 +280,7 @@ const createPokemonCard = (poke) => {
           searchNav.style.display = "flex"
           pokemonCardContainer.style.opacity= "1" 
         })
-
+        
         asideContainer.innerHTML = pokemonAsideInnerHtml
     
         aside.appendChild(asideContainer)
