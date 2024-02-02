@@ -12,6 +12,7 @@ body {
 }
 
 #pokeball-img {
+  display: none;
   position: absolute;
   height: 600px;
   right: 1600px;
@@ -74,6 +75,7 @@ body {
   margin-top: 120px;
   justify-content: center;
   display: flex;
+  align-items: center;
 }
 
 .pokemon-card {
