@@ -100,14 +100,14 @@ const createPokemonCard = (poke) => {
   
   pokemonCardContainer.appendChild(card)
   
-  const getPokemonsAside = async (pokemon) => {
+  const fetchPokemonsAside = async (pokemon) => {
     const data = await getPokemons(pokemon)
     return data
   }
   
-  const createAside = (poke) => {
+  const getAsideInfo = (poke) => {
     aside.classList.add("active")
-    getPokemonsAside(pokemonId)
+    fetchPokemonsAside(pokemonId)
     
     const pokemonGif = poke["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
     
@@ -119,9 +119,10 @@ const createPokemonCard = (poke) => {
 
     const statsData = new Object (poke.stats)
 
-      // const entry = species.flavor_text_entries    
-       // console.log(poke.stats[0].base_stat)     
-      // console.log(poke.stats[0].stat.name)     
+      const entry = poke.species.flavor_text_entries 
+      console.log(entry)   
+       console.log(poke.stats[0].base_stat)     
+      console.log(poke.stats[0].stat.name)     
 
     const searchNav = document.getElementById("search-nav")
 
@@ -239,6 +240,7 @@ const createPokemonCard = (poke) => {
 
     aside.appendChild(asideContainer)
 
+    
     closeBtn.addEventListener("click", () => {
       aside.classList.remove("active")
       asideContainer.innerHTML = ``
@@ -248,14 +250,16 @@ const createPokemonCard = (poke) => {
     })
   }
 
-  card.addEventListener("click", (e) => {
-     createAside(poke)
+  card.addEventListener("click", () => {
+    getAsideInfo(poke)
     }
   )
 
+  
 }
 
 fetchPokemons()
+
 searchPokemonButton.addEventListener("click", () => {
   const searchPokemonInputValue = searchPokemonInput.value
 })
