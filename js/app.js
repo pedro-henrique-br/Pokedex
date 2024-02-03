@@ -37,7 +37,6 @@ const getPokemons = async (id) => {
   const response = await fetch(url)
   const data = await response.json()
   createPokemonCard(data)
-  return data
 }
 
 const fetchPokemons = async () => {
@@ -49,7 +48,7 @@ const fetchPokemons = async () => {
 const createPokemonCard = (poke) => {
   const card = document.createElement("div")
   card.classList.add("pokemon-card")
-  
+
   const pokemonImg = poke.sprites.front_default
   
   const pokemonName = poke.forms[0].name
@@ -58,17 +57,21 @@ const createPokemonCard = (poke) => {
   
   const pokemonType = poke.types.map(type => type.type.name)
   
-  const backgroundColor = typeColors[pokemonType[0]]
+  const backgroundClor = typeColors[pokemonType[0]]
   
   const color_1 = typeColors[pokemonType[0]]   
   const color_2 = typeColors[pokemonType[1]]   
   
-  if(pokemonId == 649) {
-    console.log("oi")
-  }
-
-
- 
+  let pokemonInnerHtml = `
+  <div class="pokemon-card">
+  <img src="${pokemonImg}" alt="Pokemon Imagem" id="poke-img">
+  <p>N° ${pokemonId}</p>
+  <h4>${pokemonName}</h4>
+  <div class="type">
+  <p style="opacity: background: ${color_1}">${pokemonType[0]}</p>
+  <p style="background: ${color_2}">${pokemonType[1]}</p>
+  </div>
+  `
   
   if(pokemonType[1]){
     pokemonInnerHtml = `
@@ -96,38 +99,45 @@ const createPokemonCard = (poke) => {
   
   pokemonCardContainer.appendChild(card)
   
-  const getEntry = async (id) => {
-    const url = `https://pokeapi.co/api/v2/pokemon-species/${id}`
-    const response = await fetch(url)
-    const entry = await response.json()
-    return entry ["flavor_text_entries"][2]["flavor_text"]
-  }
-  
-  const fetchPokemonsAside = async (pokemon) => {
-    const data = await getPokemons(pokemon)
-    return data
-  }
-  
-  const getAsideInfo = async (poke) => {
+}
+
+const getPokemonsAside = async (pokemon) => {
+  const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+  const response = await fetch(url)
+  const data = await response.json()
+  createAside(data)
+}
+
+getPokemonsAside(2)
+
+const getPokemonEntry = async (pokemon) => {
+  const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
+  const response = await fetch(url)
+  const data = await response.json()
+}
+
+
+const createAside = (poke) => {
     aside.classList.add("active")
-    fetchPokemonsAside(pokemonId)
-    const pokemonEntry = await getEntry(pokemonId)
+    
+    console.log(poke)
 
     const pokemonGif = poke["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
     
-    const pokemonWeight = poke.weight / 10 + "kg"
+    const pokemonWeight = poke.weight
     
-    const pokemonHeight = poke.height / 10 + "m"
+    const pokemonHeight = poke.height
     
     const abilities = new Object(poke.abilities)
-    
+
     const statsData = new Object (poke.stats)
 
-      console.log(poke.stats[0].base_stat)     
-      console.log(poke.stats[0].stat.name)     
-      
+      // const entry = species.flavor_text_entries    
+       // console.log(poke.stats[0].base_stat)     
+      // console.log(poke.stats[0].stat.name)     
+
     const searchNav = document.getElementById("search-nav")
-    
+
     setTimeout( () => {
       searchNav.style.display = "none"
       document.body.style.background = backgroundColor
@@ -137,75 +147,8 @@ const createPokemonCard = (poke) => {
     const asideContainer = document.createElement("div")
     asideContainer.classList.add("aside-info")
     
-    let pokemonAsideInnerHtml = `
-    <img src="${pokemonGif}" alt="" id="poke-img">
-      <p id="pokemon-id">N° ${pokemonId}</p>
-      <h2 id="pokemon-name">${pokemonName}</h2>
-      <div class="type">
-      <p style="background: ${color_1}">${pokemonType[0]}</p>
-      <p style="background: ${color_2}">${pokemonType[1]}</p>
-      </div>
-      <h4 id="pokedex-entry">Pokemon Entry</h4>
-      <p id="pokemon-entry">${pokemonEntry}</p>
-      <div class="height-and-Weight">
-      <div class="Height"><h4>Height</h4><p>${pokemonHeight}</p></div>
-          <div class="weight"><h4>Weight</h4><p>${pokemonWeight}</p></div>
-        </div>
-        <h4>Abilities</h4>
-        <div class="Abilities-container">
-          <div class="abilities">
-            <p id="abilities">${abilities[0].ability.name}</p>
-            <p id="abilities">${abilities[1].ability.name}</p>
-          </div>
-        </div>
-        <div class="stats-title"><h4>Stats</h4>
-          <div class="stats">
-            <p>49</p>
-            <p>49</p>
-            <p>49</p>
-            <p>49</p> 
-            <p>49</p>
-            <p>49</p>
-            <p>49</p>
-          </div>
-        </div>
-        </div>`
-        
-
-    if(abilities[1] === undefined){
-        pokemonAsideInnerHtml = `
-      <img src="${pokemonGif}" alt="" id="poke-img">
-      <p id="pokemon-id">N° ${pokemonId}</p>
-      <h2 id="pokemon-name">${pokemonName}</h2>
-      <div class="type">
-      <p style="background: ${color_1}">${pokemonType[0]}</p>
-        </div>
-        <h4 id="pokedex-entry">Pokemon Entry</h4>
-        <p id="pokemon-entry">${pokemonEntry}</p>
-        <div class="height-and-Weight">
-        <div class="Height"><h4>Height</h4><p>${pokemonHeight}</p></div>
-        <div class="weight"><h4>Weight</h4><p>${pokemonWeight}</p></div>
-        </div>
-        <h4>Abilities</h4>
-      <div class="Abilities-container">
-      <div class="abilities">
-          <p id="abilities">${abilities[0].ability.name}</p>
-          </div>
-      </div>
-      <div class="stats-title"><h4>Stats</h4>
-      <div class="stats">
-            <p></p>
-            <p>49</p>
-            <p>49</p>
-            <p>49</p>
-            <p>49</p>
-            <p>49</p>
-            <p>49</p>
-            </div>
-        </div>
-        </div>`
-        } else if (pokemonType[1] === undefined){
-          pokemonAsideInnerHtml = `
+        if(abilities[1] === undefined){
+          pokemonInnerHtml = `
       <img src="${pokemonGif}" alt="" id="poke-img">
       <p id="pokemon-id">N° ${pokemonId}</p>
       <h2 id="pokemon-name">${pokemonName}</h2>
@@ -213,10 +156,42 @@ const createPokemonCard = (poke) => {
         <p style="background: ${color_1}">${pokemonType[0]}</p>
         </div>
         <h4 id="pokedex-entry">Pokemon Entry</h4>
-        <p id="pokemon-entry">${pokemonEntry}</p>
+        <p id="pokemon-entry">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
       <div class="height-and-Weight">
-        <div class="Height"><h4>Height</h4><p>${pokemonHeight}</p></div>
-        <div class="weight"><h4>Weight</h4><p>${pokemonWeight}</p></div>
+        <div class="Height"><h4>Height</h4><p>${pokemonHeight}${`m`}</p></div>
+        <div class="weight"><h4>Weight</h4><p>${pokemonWeight}${` `+ `kg`}</p></div>
+      </div>
+        <h4>Abilities</h4>
+      <div class="Abilities-container">
+        <div class="abilities">
+          <p id="abilities">${abilities[0].ability.name}</p>
+        </div>
+      </div>
+      <div class="stats-title"><h4>Stats</h4>
+        <div class="stats">
+            <p></p>
+            <p>49</p>
+            <p>49</p>
+            <p>49</p>
+            <p>49</p>
+            <p>49</p>
+            <p>49</p>
+          </div>
+        </div>
+        </div>`
+        } else if (pokemonType[1] === undefined){
+          pokemonInnerHtml = `
+      <img src="${pokemonGif}" alt="" id="poke-img">
+      <p id="pokemon-id">N° ${pokemonId}</p>
+      <h2 id="pokemon-name">${pokemonName}</h2>
+      <div class="type">
+        <p style="background: ${color_1}">${pokemonType[0]}</p>
+        </div>
+        <h4 id="pokedex-entry">Pokemon Entry</h4>
+        <p id="pokemon-entry">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
+      <div class="height-and-Weight">
+        <div class="Height"><h4>Height</h4><p>${pokemonHeight}${`m`}</p></div>
+        <div class="weight"><h4>Weight</h4><p>${pokemonWeight}${` `+ `kg`}</p></div>
       </div>
         <h4>Abilities</h4>
       <div class="Abilities-container">
@@ -238,7 +213,7 @@ const createPokemonCard = (poke) => {
         </div>
         </div>`
         } else {
-          pokemonAsideInnerHtml = `
+          pokemonInnerHtml = `
     <img src="${pokemonGif}" alt="" id="poke-img">
       <p id="pokemon-id">N° ${pokemonId}</p>
       <h2 id="pokemon-name">${pokemonName}</h2>
@@ -247,10 +222,10 @@ const createPokemonCard = (poke) => {
       <p style="background: ${color_2}">${pokemonType[1]}</p>
       </div>
       <h4 id="pokedex-entry">Pokemon Entry</h4>
-      <p id="pokemon-entry">${pokemonEntry}</p>
+      <p id="pokemon-entry">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
       <div class="height-and-Weight">
-      <div class="Height"><h4>Height</h4><p>${pokemonHeight}</p></div>
-          <div class="weight"><h4>Weight</h4><p>${pokemonWeight}</p></div>
+      <div class="Height"><h4>Height</h4><p>${pokemonHeight}${`m`}</p></div>
+          <div class="weight"><h4>Weight</h4><p>${pokemonWeight}${` `+ `kg`}</p></div>
         </div>
         <h4>Abilities</h4>
         <div class="Abilities-container">
@@ -273,31 +248,21 @@ const createPokemonCard = (poke) => {
         </div>`
         }
 
-        closeBtn.addEventListener("click", () => {
-          aside.classList.remove("active")
-          asideContainer.innerHTML = ``
-          document.body.style.background = ``
-          searchNav.style.display = "flex"
-          pokemonCardContainer.style.opacity= "1" 
-        })
-        
-        asideContainer.innerHTML = pokemonAsideInnerHtml
-    
-        aside.appendChild(asideContainer)
-    
-        
-      }
+    asideContainer.innerHTML = pokemonInnerHtml
 
-  card.addEventListener("click", () => {
-    getAsideInfo(poke)
-    }
-  )
+    aside.appendChild(asideContainer)
+    console.log(pokemonCardContainer.value)
 
-}
+  }
+
+  closeBtn.addEventListener("click", () => {
+    aside.classList.remove("active")
+    asideContainer.innerHTML = ``
+    document.body.style.background = ``
+    searchNav.style.display = "flex"
+    pokemonCardContainer.style.opacity= "1" 
+  })
+
+
 
 fetchPokemons()
-
-searchPokemonButton.addEventListener("click", () => {
-  const searchPokemonInputValue = searchPokemonInput.value
-})
-
