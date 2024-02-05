@@ -31,6 +31,7 @@ const typeColors = {
 const mainTypes = Object.keys(typeColors)
 
 let maxIndexCount = 649
+let currentShowList = 0
 
 const getPokemons = async (id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`
@@ -40,8 +41,8 @@ const getPokemons = async (id) => {
 }
 
 const fetchPokemons = async () => {
-  for(i = 1; maxIndexCount >= i; i++){
-    await getPokemons(i)
+  for(currentShowList = 1; maxIndexCount >= currentShowList; currentShowList++){
+    await getPokemons(currentShowList)
   };
 }
 
