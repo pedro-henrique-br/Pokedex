@@ -30,8 +30,7 @@ const typeColors = {
 
 const mainTypes = Object.keys(typeColors)
 
-let maxIndexCount = 649
-let currentShowList = 0
+let maxIndexCount = 30
 
 const getPokemons = async (id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`
@@ -41,23 +40,40 @@ const getPokemons = async (id) => {
 }
 
 const fetchPokemons = async () => {
-  for(currentShowList = 1; maxIndexCount >= currentShowList; currentShowList++){
-    await getPokemons(currentShowList)
+  for(let i = 1; maxIndexCount >= i; i++){
+    await getPokemons(i)
+    
+  }
   };
-}
 
-fetchPokemons()
-
-const searchPoke = () => {
+  const searchPoke = () => {
   const pokemonInputValue = searchPokemonInput.value
+  if(pokemonInputValue === ""){
+    pokemonCardContainer.innerHTML = ""
+    fetchPokemons()
+  } else {
+  pokemonCardContainer.innerHTML = ""
   getPokemons(pokemonInputValue)
+  }
 }
 
 searchPokemonButton.addEventListener("click", searchPoke)
+searchPokemonInput.addEventListener("keydown", (e) => {
+  if(e.key === "Enter"){
+    pokemonCardContainer.innerHTML = ""
+    searchPoke()
+  }
+  else if(e.key === "Backspace"){
+    pokemonCardContainer.innerHTML = ""
+    fetchPokemons()
+  }
+})
+
+fetchPokemons()
 
 const createPokemonCard = (poke) => {
   const card = document.createElement("div")
-
+  
   card.classList.add("pokemon-card")
 
   const pokemonImg = poke.sprites.front_default
