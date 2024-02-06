@@ -360,11 +360,11 @@ body {
 }
 
 
-
 #close-icon {
+  position: absolute;
+  margin: 20px 1800px 0px 0px;
   cursor: pointer;
-  display: flex;
-  align-self: flex-start;
+  height: 25px;
 }
 
 .aside-info .stats {
@@ -398,42 +398,15 @@ body {
   animation-name: aside;
 }
 
-@media screen and (max-width: 1200px) {
-  .nav {
-    margin-top: 2rem;
-    align-items: center;
-  }
-  
-  .search-nav {
-    width: 52rem;
-    align-items: center;
-    justify-content: flex-end;
-    display: flex;
-  }
-  
-  .search-pokemon {
-    width: 52rem;
-    height: 80px;
-    background: #FFFFFF;
-    border-radius: 26px;
-    border: none;
-    font-size: 1.2rem;
-    padding-left: 1.2rem;
-  }
-  
-  #lupa-img:hover {
+
+@media screen and (max-width: 1790px) {
+  #close-icon {
+    margin: 20px 1690px 0px 0px;
     cursor: pointer;
-  }
-  
-  #lupa-img {
-    margin-right: 20px;
-    width: 41px;
-    height: 41px;
-    filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25)); 
-    transform: rotate(-90deg);
-  
+    height: 25px;
   }
 }
+
 
 @media screen and (max-width: 1364px) {
   .nav {
@@ -469,9 +442,14 @@ body {
     filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25)); 
     transform: rotate(-90deg);
   }
+  #close-icon {
+    margin: 20px 1290px 0px 0px;
+    cursor: pointer;
+    height: 25px;
+  }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1203px) {
   .nav {
     margin-top: 2rem;
     align-items: center;
@@ -504,6 +482,11 @@ body {
     height: 41px;
     filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25)); 
     transform: rotate(-90deg);
+  }
+  #close-icon {
+    margin: 20px 1030px 0px 0px;
+    cursor: pointer;
+    height: 25px;
   }
 }
 
@@ -540,6 +523,11 @@ body {
     height: 41px;
     filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25)); 
     transform: rotate(-90deg);
+  }
+  #close-icon {
+    margin: 20px 950px 0px 0px;
+    cursor: pointer;
+    height: 25px;
   }
 }
 
@@ -577,6 +565,11 @@ body {
     filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25)); 
     transform: rotate(-90deg);
   }
+  #close-icon {
+    margin: 20px 480px 0px 0px;
+    cursor: pointer;
+    height: 25px;
+  }
 }
 
 @media screen and (max-width: 474px) {
@@ -612,6 +605,12 @@ body {
     height: 41px;
     filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25)); 
     transform: rotate(-90deg);
+  }
+  
+  #close-icon {
+    margin: 20px 340px 0px 0px;
+    cursor: pointer;
+    height: 25px;
   }
 }
 
@@ -649,4 +648,11 @@ body {
     filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25)); 
     transform: rotate(-90deg);
   }
+
+  #close-icon {
+    margin: 20px 330px 0px 0px;
+    cursor: pointer;
+    height: 25px;
+  }
+  
 }

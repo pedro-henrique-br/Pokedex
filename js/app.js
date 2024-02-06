@@ -86,6 +86,7 @@ searchPokemonInput.addEventListener("input", () => {
   if(pokemonInputValue === ""){
     pokemonCardContainer.innerHTML = ""
     fetchPokemons()
+    maxIndex = 29
   } else {
     pokemonCardContainer.innerHTML = ""
     currentlyShowingAmount = 0
