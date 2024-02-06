@@ -10,8 +10,9 @@
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes features:
 
 - [x] Imprimir todos os pokemons
-- [] busca de pokemons funcional
-- [] info do pokemon selecionado
+- [x] busca de pokemons funcional
+- [/] info do pokemon selecionado
+- [] Responsividade 
 
 ## 🚀 Instalando <Pokedex>
 
