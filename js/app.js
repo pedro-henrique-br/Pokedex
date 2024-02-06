@@ -82,16 +82,16 @@ function addNewScrollPokemon() {
 // Search
 
 searchPokemonInput.addEventListener("input", () => {
-  const pokemonInputValue = searchPokemonInput.value.toLowerCase()
-  const inputStringValue = pokemonInputValue.replace(/[^0-9]/g, '')
-  if(inputStringValue == ""){
+  const pokemonInputValue = searchPokemonInput.value.replace(/[^0-9]/g, '').toLowerCase() /* fix replace to receive caracteres */
+  pokemonCardContainer.innerHTML = ""
+  if(pokemonInputValue === ""){
     pokemonCardContainer.innerHTML = ""
-    currentlyShowingAmount = 0
     fetchPokemons()
   } else {
     pokemonCardContainer.innerHTML = ""
+    currentlyShowingAmount = 0
     maxIndex = 29
-    getPokemons(inputStringValue)
+    getPokemons(pokemonInputValue)
 }})
 
 fetchPokemons()
@@ -179,7 +179,7 @@ fetchPokemons()
       
       const abilities = new Object(poke.abilities)
   
-      const pokeStatsTotal = poke.stats[1].base_stat + poke.stats[2].base_stat + poke.stats[3].base_stat + poke.stats[4].base_stat 
+      const pokeStatsTotal = poke.stats[1].base_stat + poke.stats[2].base_stat + poke.stats[3].base_stat + poke.stats[4].base_stat + poke.stats[5].base_stat 
 
         setTimeout(() => {
           searchNav.style.display = "none"
@@ -212,12 +212,12 @@ fetchPokemons()
         </div>
         <div class="stats-title"><h4>Stats</h4>
           <div class="stats">
-              <p>hp</p>
-              <p>atk</p>
-              <p>def</p>
-              <p>Sattack</p>
-              <p>Sdef</p>
-              <p>Total</p>
+              <p id="hp-stat">HP<i>${poke.stats[1].base_stat}</i></p>
+              <p id="atk-stat">ATK<i>${poke.stats[2].base_stat}</i></p>
+              <p id="def-stat">DEF<i>${poke.stats[3].base_stat}</i></p>
+              <p id="spa-stat">SpA<i>${poke.stats[4].base_stat}</i></p>
+              <p id="spd-stat">SpD<i>${poke.stats[5].base_stat}</i></p>
+              <p id="tot-stat">TOT<i></i>${pokeStatsTotal}</p>  
             </div>
           </div>
           </div>`
@@ -244,13 +244,12 @@ fetchPokemons()
         </div>
         <div class="stats-title"><h4>Stats</h4>
           <div class="stats">
-            <p>hp</p>
-            <p>atk</p>
-            <p>def</p>
-            <p>Sattack</p>
-            <p>Sdef</p>
-            <p>Total</p>
-            </div>
+          <p><span id="hp-stat">HP</span><span>${poke.stats[1].base_stat}</span></p>
+          <p id="atk-stat"><span>ATK</span><span>${poke.stats[2].base_stat}</span></p>
+          <p id="def-stat">DEF<span>${poke.stats[3].base_stat}</span></p>
+          <p id="spa-stat">SpA<span>${poke.stats[4].base_stat}</span></p>
+          <p id="spd-stat">SpD<span>${poke.stats[5].base_stat}</span></p>
+          <p id="tot-stat">TOT<span>${pokeStatsTotal}</span></p>  
           </div>
           </div>`
           } else {
@@ -277,12 +276,12 @@ fetchPokemons()
           </div>
           <div class="stats-title"><h4>Stats</h4>
             <div class="stats">
-              <p>hp<i>${poke.stats[1].base_stat}</i></p>
-              <p>atk<i>${poke.stats[2].base_stat}</i></p>
-              <p>def<i>${poke.stats[3].base_stat}</i></p>
-              <p>Sattack<i>${poke.stats[4].base_stat}</i></p>
-              <p>Sdef<i>${poke.stats[5].base_stat}</i></p>
-              <p>Total<i></i>${pokeStatsTotal}</p>
+              <p><span id="hp-stat">HP</span><span>${poke.stats[1].base_stat}</span></p>
+              <p><span id="atk-stat">ATK</span><span>${poke.stats[2].base_stat}</span></p>
+              <p><span id="def-stat">DEF</span>${poke.stats[3].base_stat}</span></p>
+              <p><span id="spa-stat">SpA</span>${poke.stats[4].base_stat}</span></p>
+              <p><span id="spd-stat">SpD</span>${poke.stats[5].base_stat}</span></p>
+              <p><span id="tot-stat">TOT</span>${pokeStatsTotal}</span></p>  
             </div>
           </div>
           </div>`

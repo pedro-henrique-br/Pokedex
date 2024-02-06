@@ -12,7 +12,7 @@ body {
   display: flex;
   font-family: Rubik;
   overflow-x: hidden;
-  background: #fafdff;
+  background: #f4f9ffb9;
 }
 
 #pokeball-img {
@@ -65,7 +65,7 @@ body {
 
 #card-container {
   max-width: 85vw;
-  margin: 100px 0px 100px 0px;
+  margin: 50px 0px 100px 0px;
   flex-wrap: wrap;
   justify-content: center;
   display: flex;
@@ -73,6 +73,7 @@ body {
 }
 
 .pokemon-card {
+  background: #ffff;
   margin: 20px 10px 50px 10px;
   width: 270px;
   height: 160px;
@@ -195,13 +196,13 @@ body {
 
 .aside-info #pokedex-entry {
   margin-top: 20px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 800;
 }
 
 .aside-info #pokemon-entry {
   margin-top: 5px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #858585;
   text-align: center;
@@ -228,10 +229,10 @@ body {
   align-items: center;
   display: flex;
   text-align: center;
-  background: #c1c1c132;
+  background: #92929232;
   border-radius: 10px;
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 1rem;
   height: 30px;
   width: 250px;
 }
@@ -258,26 +259,108 @@ body {
   align-items: center;
   display: flex;
   text-align: center;
-  background: #c1c1c132;
+  background: #92929232;
   border-radius: 10px;
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   height: 30px;
   width: 500px;
 }
 
 .aside-info .stats p {
-  margin-right: 10px;
-  width: 8px auto;
-  height: 40px;
-  background: #fad;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-right: 15px;
+  width: 40px;
+  height: 60px;
+  background:  #92929232;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px 5px 0px;
 }
 
-.aside-info .stats {
+#hp-stat {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffff;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 1, 1, 0.719);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
 }
+
+#atk-stat {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 1, 1, 0.719);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+#def-stat {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 1, 1, 0.719);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+#spa-stat {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 1, 1, 0.719);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+#spd-stat {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 1, 1, 0.719);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+#tot-stat {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(1, 26, 255, 0.719);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+
 
 #close-icon {
   cursor: pointer;
@@ -285,8 +368,17 @@ body {
   align-self: flex-start;
 }
 
-.stats{
+.aside-info .stats {
+  align-items: center;
+  justify-content: center;
   display: flex;
+}
+
+.aside-info .stats-title h4 {
+  margin: 20px 0px 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes aside {
