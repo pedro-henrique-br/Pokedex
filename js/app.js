@@ -83,14 +83,15 @@ function addNewScrollPokemon() {
 
 searchPokemonInput.addEventListener("input", () => {
   const pokemonInputValue = searchPokemonInput.value.toLowerCase()
-  if(pokemonInputValue == ""){
+  const inputStringValue = pokemonInputValue.replace(/[^0-9]/g, '')
+  if(inputStringValue == ""){
     pokemonCardContainer.innerHTML = ""
     currentlyShowingAmount = 0
     fetchPokemons()
   } else {
     pokemonCardContainer.innerHTML = ""
     maxIndex = 29
-    getPokemons(pokemonInputValue)
+    getPokemons(inputStringValue)
 }})
 
 fetchPokemons()
@@ -123,7 +124,7 @@ fetchPokemons()
   <p style="background: ${color_2}">${pokemonType[1]}</p>
   </div>
   `
-  
+
   if(pokemonType[1]){
     pokemonInnerHtml = `
     <img src="${pokemonImg}" alt="Pokemon Imagem" id="poke-img">
@@ -153,33 +154,36 @@ fetchPokemons()
     createAside(poke)
   })
 
-  const createAside = (poke) => {
-      const searchNav = document.getElementById("search-nav")
+  const getPokemonEntry = async (pokemon) => {
+      const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
+      const response = await fetch(url)
+      const data = await response.json()
+      return data["flavor_text_entries"][1]["flavor_text"].toLowerCase().replace(`\f`, ' ')
+  }    
+  
+  const createAside = async (poke) => {
+    const searchNav = document.getElementById("search-nav")
+    aside.classList.add("active")
+    
+    const entry = await getPokemonEntry(pokemonId)
 
-      aside.classList.add("active")
-      
       let pokemonGif = poke["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
       
       if(pokemonGif == undefined){
         pokemonGif = pokemonImg
       }
 
-      const pokemonWeight = poke.weight
+      const pokemonWeight = poke.weight / 10 + " " + "kg"
       
-      const pokemonHeight = poke.height
+      const pokemonHeight = poke.height / 10 + " " + "m"
       
       const abilities = new Object(poke.abilities)
   
-      const statsData = new Object (poke.stats)
+      const pokeStatsTotal = poke.stats[1].base_stat + poke.stats[2].base_stat + poke.stats[3].base_stat + poke.stats[4].base_stat 
 
-        // const entry = species.flavor_text_entries    
-         // console.log(poke.stats[0].base_stat)     
-        // console.log(poke.stats[0].stat.name)     
-  
-  
-      setTimeout( () => {
-        searchNav.style.display = "none"
-        document.body.style.background = backgroundColor
+        setTimeout(() => {
+          searchNav.style.display = "none"
+          document.body.style.background = backgroundColor
         pokemonCardContainer.style.visibility = "hidden"
       }, 100)
       
@@ -195,10 +199,10 @@ fetchPokemons()
           <p style="background: ${color_1}">${pokemonType[0]}</p>
           </div>
           <h4 id="pokedex-entry">Pokemon Entry</h4>
-          <p id="pokemon-entry">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
+          <p id="pokemon-entry">${entry}</p>
         <div class="height-and-Weight">
-          <div class="Height"><h4>Height</h4><p>${pokemonHeight}${`m`}</p></div>
-          <div class="weight"><h4>Weight</h4><p>${pokemonWeight}${` `+ `kg`}</p></div>
+          <div class="Height"><h4>Height</h4><p>${pokemonHeight}</p></div>
+          <div class="weight"><h4>Weight</h4><p>${pokemonWeight}</p></div>
         </div>
           <h4>Abilities</h4>
         <div class="Abilities-container">
@@ -208,13 +212,12 @@ fetchPokemons()
         </div>
         <div class="stats-title"><h4>Stats</h4>
           <div class="stats">
-              <p></p>
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
+              <p>hp</p>
+              <p>atk</p>
+              <p>def</p>
+              <p>Sattack</p>
+              <p>Sdef</p>
+              <p>Total</p>
             </div>
           </div>
           </div>`
@@ -227,10 +230,10 @@ fetchPokemons()
           <p style="background: ${color_1}">${pokemonType[0]}</p>
           </div>
           <h4 id="pokedex-entry">Pokemon Entry</h4>
-          <p id="pokemon-entry">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
+          <p id="pokemon-entry">${entry}</p>
         <div class="height-and-Weight">
-          <div class="Height"><h4>Height</h4><p>${pokemonHeight}${`m`}</p></div>
-          <div class="weight"><h4>Weight</h4><p>${pokemonWeight}${` `+ `kg`}</p></div>
+          <div class="Height"><h4>Height</h4><p>${pokemonHeight}</p></div>
+          <div class="weight"><h4>Weight</h4><p>${pokemonWeight}</p></div>
         </div>
           <h4>Abilities</h4>
         <div class="Abilities-container">
@@ -241,13 +244,12 @@ fetchPokemons()
         </div>
         <div class="stats-title"><h4>Stats</h4>
           <div class="stats">
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
+            <p>hp</p>
+            <p>atk</p>
+            <p>def</p>
+            <p>Sattack</p>
+            <p>Sdef</p>
+            <p>Total</p>
             </div>
           </div>
           </div>`
@@ -261,10 +263,10 @@ fetchPokemons()
         <p style="background: ${color_2}">${pokemonType[1]}</p>
         </div>
         <h4 id="pokedex-entry">Pokemon Entry</h4>
-        <p id="pokemon-entry">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
+        <p id="pokemon-entry">${entry}</p>
         <div class="height-and-Weight">
-        <div class="Height"><h4>Height</h4><p>${pokemonHeight}${`m`}</p></div>
-            <div class="weight"><h4>Weight</h4><p>${pokemonWeight}${` `+ `kg`}</p></div>
+        <div class="Height"><h4>Height</h4><p>${pokemonHeight}</p></div>
+            <div class="weight"><h4>Weight</h4><p>${pokemonWeight}</p></div>
           </div>
           <h4>Abilities</h4>
           <div class="Abilities-container">
@@ -275,13 +277,12 @@ fetchPokemons()
           </div>
           <div class="stats-title"><h4>Stats</h4>
             <div class="stats">
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
-              <p>49</p> 
-              <p>49</p>
-              <p>49</p>
-              <p>49</p>
+              <p>hp<i>${poke.stats[1].base_stat}</i></p>
+              <p>atk<i>${poke.stats[2].base_stat}</i></p>
+              <p>def<i>${poke.stats[3].base_stat}</i></p>
+              <p>Sattack<i>${poke.stats[4].base_stat}</i></p>
+              <p>Sdef<i>${poke.stats[5].base_stat}</i></p>
+              <p>Total<i></i>${pokeStatsTotal}</p>
             </div>
           </div>
           </div>`
@@ -301,12 +302,6 @@ fetchPokemons()
     }
   }  
   
-const getPokemonEntry = async (pokemon) => {
-    const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
-    const response = await fetch(url)
-    const data = await response.json()
-    createAside(data)
-}    
 
 
 

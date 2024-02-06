@@ -204,6 +204,7 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
   color: #858585;
+  text-align: center;
 }
 
 .aside-info .height-and-Weight {
@@ -263,6 +264,19 @@ body {
   font-size: 0.9rem;
   height: 30px;
   width: 500px;
+}
+
+.aside-info .stats p {
+  margin-right: 10px;
+  width: 8px auto;
+  height: 40px;
+  background: #fad;
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-info .stats {
+  display: flex;
 }
 
 #close-icon {
