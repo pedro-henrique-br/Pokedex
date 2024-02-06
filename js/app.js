@@ -82,8 +82,7 @@ function addNewScrollPokemon() {
 // Search
 
 searchPokemonInput.addEventListener("input", () => {
-  const pokemonInputValue = searchPokemonInput.value.replace(/[^0-9]/g, '').toLowerCase() /* fix replace to receive caracteres */
-  pokemonCardContainer.innerHTML = ""
+  const pokemonInputValue = searchPokemonInput.value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() /* fix replace to receive caracteres */
   if(pokemonInputValue === ""){
     pokemonCardContainer.innerHTML = ""
     fetchPokemons()
