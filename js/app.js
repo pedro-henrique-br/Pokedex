@@ -30,7 +30,8 @@ const typeColors = {
 
 const mainTypes = Object.keys(typeColors)
 
-let maxIndexCount = 30
+let maxIndex = 30
+let currentlyShowingAmount = 0
 
 const getPokemons = async (id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`
@@ -39,44 +40,65 @@ const getPokemons = async (id) => {
   createPokemonCard(data)
 }
 
-const fetchPokemons = async () => {
-  for(let i = 1; maxIndexCount >= i; i++){
-    await getPokemons(i)
-    
-  }
-  };
-
-  const searchPoke = () => {
-  const pokemonInputValue = searchPokemonInput.value
-  if(pokemonInputValue === ""){
-    pokemonCardContainer.innerHTML = ""
-    fetchPokemons()
+async function fetchPokemons (index) {
+  if(currentlyShowingAmount <= index){
+    currentlyShowingAmount += 1
+    await getPokemons(currentlyShowingAmount)
+    updatePokemonList()
   } else {
-  pokemonCardContainer.innerHTML = ""
-  getPokemons(pokemonInputValue)
+    currentlyShowingAmount = currentlyShowingAmount
+    updatePokemonList()
+  }
+}; 
+
+function updatePokemonList (){
+  if(currentlyShowingAmount <= maxIndex){
+    fetchPokemons(currentlyShowingAmount)
   }
 }
 
-searchPokemonButton.addEventListener("click", searchPoke)
-searchPokemonInput.addEventListener("keydown", (e) => {
-  if(e.key === "Enter"){
-    pokemonCardContainer.innerHTML = ""
-    searchPoke()
+function increasesMaxBy (by) {
+  if(maxIndex >= by){
+    maxIndex += by
+  } else {
+    return maxIndex
   }
-  else if(e.key === "Backspace"){
+}
+
+// Scroll
+
+window.addEventListener('scroll', function () {
+  addNewScrollPokemon();
+});
+
+function addNewScrollPokemon() {
+  if (window.scrollY + 100 >= document.documentElement.scrollHeight - document.documentElement.clientHeight) {
+    increasesMaxBy(29)
+    updatePokemonList();
+  };
+};
+
+// Search
+
+searchPokemonInput.addEventListener("input", () => {
+  const pokemonInputValue = searchPokemonInput.value.toLowerCase()
+  if(pokemonInputValue == ""){
     pokemonCardContainer.innerHTML = ""
+    currentlyShowingAmount = 0
     fetchPokemons()
-  }
-})
+  } else {
+    pokemonCardContainer.innerHTML = ""
+    getPokemons(pokemonInputValue)
+}})
 
 fetchPokemons()
-
-const createPokemonCard = (poke) => {
+  
+  function createPokemonCard (poke) {
   const card = document.createElement("div")
   
   card.classList.add("pokemon-card")
-
-  const pokemonImg = poke.sprites.front_default
+  
+  const pokemonImg = poke["sprites"].front_default
   
   const pokemonName = poke.forms[0].name
   
@@ -125,7 +147,6 @@ const createPokemonCard = (poke) => {
   card.innerHTML = pokemonInnerHtml
   
   pokemonCardContainer.appendChild(card)
-  
 }
 
 // const getPokemonsAside = async (pokemon) => {
@@ -137,9 +158,9 @@ const createPokemonCard = (poke) => {
 // getPokemonsAside(2)
 
 // const getPokemonEntry = async (pokemon) => {
-//   const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
-//   const response = await fetch(url)
-//   const data = await response.json()
+  //   const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
+  //   const response = await fetch(url)
+  //   const data = await response.json()
 // }
 
 
