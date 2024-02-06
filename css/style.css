@@ -16,10 +16,10 @@ body {
 }
 
 #pokeball-img {
-  position: absolute;
-  height: 600px;
-  right: 1600px;
-  top: -108px;
+  position: fixed;
+  height: 900px;
+  right: 1500px;
+  top: -238px;
 }
 
 .nav {
@@ -81,6 +81,7 @@ body {
 }
 
 .pokemon-card {
+  position: relative;
   cursor: pointer;
   display: flex;
   justify-content: center;
