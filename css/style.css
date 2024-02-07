@@ -278,6 +278,7 @@ body {
 }
 
 #close-icon img{
+  image-rendering: pixelated;
   cursor: pointer;
   height: 30px;
 }
@@ -285,9 +286,6 @@ body {
 #close-icon {
   margin: 30px;
   width: 100vw;
-  display: flex;
-  align-items: flex-end;
-  align-self: flex-start;
 }
 
 .aside-info .stats {
