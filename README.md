@@ -2,10 +2,7 @@
 
 <a href="https://pokedex-five-nu-78.vercel.app/">Pokedex Live</a>
 
-
-<img src="" alt="Exemplo imagem">
-
-> Projeto feito para pratica.
+> Made for practice.
 
 ### Ajustes e melhorias
 
@@ -13,7 +10,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [x] Imprimir todos os pokemons
 - [x] busca de pokemons funcional
-- [/] info do pokemon selecionado
+- [x] info do pokemon selecionado
 - [] Responsividade 
 
 ## 🚀 Instalando <Pokedex>
