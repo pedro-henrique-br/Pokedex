@@ -27,19 +27,10 @@ body {
   align-items: center;
 }
 
-.search-nav {
-  align-items: center;
-  justify-content: flex-end;
-  display: flex;
-  width: 1160px;
-  height: 80px;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 26px;
-}
+
 
 .search-pokemon {
-  position: absolute;
+  display: flex;
   width: 1160px;
   height: 80px;
   background: #FFFFFF;
@@ -47,19 +38,8 @@ body {
   border: none;
   font-size: 1.2rem;
   padding-left: 1.2rem;
-}
-
-#lupa-img:hover {
-  cursor: pointer;
-}
-
-#lupa-img {
-  margin-right: 20px;
-  width: 41px;
-  height: 41px;
-  filter: drop-shadow(0px 6px 4px rgba(0, 0, 0, 0.25)); 
-  transform: rotate(-90deg);
-
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 26px;
 }
 
 #card-container {
@@ -91,14 +71,14 @@ body {
 
 .pokemon-card:hover {
   animation-duration: 0.1s;
-  border: 2px solid rgba(128, 128, 128, 0.423);
+  border: 2px solid rgba(204, 204, 204, 0.5);
 }
 
 .pokemon-card p {
   font-size: 0.9rem;
   font-weight: 800;
   margin-top: 20px;
-  color: #414141b4;
+  color: #414141c4;
 }
 
 .pokemon-card img {
@@ -142,18 +122,18 @@ body {
   margin: 10px 5px 0px 5px;
   height: 30px;
   width: 60px;
-  color: rgb(27, 27, 27);
-  font-size: 0.9rem;
+  color: rgb(0, 0, 0);
 }
 
 .aside {
-  display: none;
+  display: flex;
+  visibility: hidden;
   justify-content: center;
   bottom: 0px;
   top: 100px;
   position: fixed;
   width: 100vw;
-  height:100vh;
+  height: 100vh;
   background: #ffffff;
 }
 
@@ -164,17 +144,14 @@ body {
 }
 
 .aside-info img {
-  object-fit: contain;
   image-rendering: pixelated;
-  max-width: 350px;
   height: 22vh;
-  object-fit: cover;
   margin-top: -80px;
 }
 
 .aside-info #pokemon-id {
   margin-top: 20px;
-  font-weight: 600;
+  font-weight: 800;
   color: #858585;
   font-size: 0.9rem;
 }
@@ -184,20 +161,18 @@ body {
 }
 
 .aside-info .type {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .aside-info .type p {
   width: 80px;
   color: #000000;
-  background-color: #d3d3d3;
-  margin-top: 10px;
 }
 
 .aside-info #pokedex-entry {
   margin-top: 20px;
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .aside-info #pokemon-entry {
@@ -206,19 +181,16 @@ body {
   font-weight: 600;
   color: #858585;
   text-align: center;
+  max-width: 500px;
 }
 
 .aside-info .height-and-Weight {
-  margin: 20px 20px 20px 0px;
-  width: 500px ;
-  justify-content: space-between;
   display: flex;
-  align-items: center;
+  margin: 20px 0px 20px 0px;
 }
 
-
 .Height, .weight {
-  justify-content: center;
+  margin: 5px;
   align-items: center;
   flex-direction: column;
   display: flex;
@@ -228,43 +200,28 @@ body {
   justify-content: center;
   align-items: center;
   display: flex;
-  text-align: center;
   background: #92929232;
   border-radius: 10px;
-  font-weight: 400;
   font-size: 1rem;
   height: 30px;
   width: 250px;
 }
 
-.aside-info .abilities-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 500px ;
-}
-
-
 .aside-info .abilities {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 510px;
-  margin-top: 10px;
+  margin-top: 5px ;
 }
 
-.aside-info .abilities p{
+.aside-info .abilities p {
+  margin: 5px;
   justify-content: center;
   align-items: center;
   display: flex;
-  text-align: center;
   background: #92929232;
   border-radius: 10px;
-  font-weight: 400;
   font-size: 1.1rem;
   height: 30px;
-  width: 500px;
+  width: 250px;
 }
 
 .aside-info .stats p {
@@ -282,88 +239,45 @@ body {
   padding: 5px 0px 5px 0px;
 }
 
-#hp-stat {
+.stat {
   font-size: 0.8rem;
   font-weight: 600;
   color: #ffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(255, 1, 1, 0.719);
+  background: rgba(156, 156, 156, 0.719);
   height: 30px;
   width: 30px;
   border-radius: 50%;
+}
+
+#hp-stat {
+  background: rgba(255, 0, 0, 0.904);
 }
 
 #atk-stat {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 1, 1, 0.719);
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
+  background: rgb(255, 123, 0);
 }
 
 #def-stat {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 1, 1, 0.719);
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
+  background: rgb(73, 255, 1);
 }
 
 #spa-stat {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 1, 1, 0.719);
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
+  background: rgb(212, 95, 0);
 }
 
 #spd-stat {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 1, 1, 0.719);
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
+  background: rgb(54, 192, 0);
 }
 
 #tot-stat {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(1, 26, 255, 0.719);
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
+  background: rgba(0, 47, 255, 0.719);
 }
 
-
 #close-icon {
-  position: absolute;
-  margin: 20px 1800px 0px 0px;
+  display: flex;
   cursor: pointer;
   height: 25px;
 }
@@ -384,8 +298,6 @@ body {
 @keyframes aside {
   from {
     margin-top: 1050px;
-    display: none;
-    opacity: 00;
   }
   to {
     margin-top: 0px;
@@ -394,21 +306,12 @@ body {
 }
 
 .active {
-  display: flex;
-  animation-duration: 0.4s;
+  visibility: visible;
+  animation-duration: 0.3s;
   animation-name: aside;
 }
 
-
-@media screen and (max-width: 1790px) {
-  #close-icon {
-    margin: 20px 1690px 0px 0px;
-    cursor: pointer;
-    height: 25px;
-  }
-}
-
-
+/* 
 @media screen and (max-width: 1364px) {
   .nav {
     margin-top: 2rem;
@@ -444,7 +347,7 @@ body {
     transform: rotate(-90deg);
   }
   #close-icon {
-    margin: 20px 1290px 0px 0px;
+    margin: 20px 1190px 0px 0px;
     cursor: pointer;
     height: 25px;
   }
@@ -485,8 +388,7 @@ body {
     transform: rotate(-90deg);
   }
   #close-icon {
-    margin: 20px 1030px 0px 0px;
-    cursor: pointer;
+    margin: 20px 130px 0px 0px;
     height: 25px;
   }
 }
@@ -526,7 +428,7 @@ body {
     transform: rotate(-90deg);
   }
   #close-icon {
-    margin: 20px 950px 0px 0px;
+    margin: 20px 150px 0px 0px;
     cursor: pointer;
     height: 25px;
   }
@@ -656,4 +558,4 @@ body {
     height: 25px;
   }
   
-}
+} */
