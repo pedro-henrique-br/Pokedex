@@ -185,7 +185,7 @@ fetchPokemons()
         setTimeout(() => {
           searchNav.style.display = "none"
           document.body.style.background = backgroundColor
-        pokemonCardContainer.style.visibility = "hidden"
+          pokemonCardContainer.style.visibility = "hidden"
       }, 100)
       
       const asideContainer = document.createElement("div")
@@ -213,12 +213,12 @@ fetchPokemons()
         </div>
         <div class="stats-title"><h4>Stats</h4>
           <div class="stats">
-              <p id="hp-stat">HP<i>${poke.stats[1].base_stat}</i></p>
-              <p id="atk-stat">ATK<i>${poke.stats[2].base_stat}</i></p>
-              <p id="def-stat">DEF<i>${poke.stats[3].base_stat}</i></p>
-              <p id="spa-stat">SpA<i>${poke.stats[4].base_stat}</i></p>
-              <p id="spd-stat">SpD<i>${poke.stats[5].base_stat}</i></p>
-              <p id="tot-stat">TOT<i></i>${pokeStatsTotal}</p>  
+          <p><span class="stat" id="hp-stat">HP</span><span>${poke.stats[1].base_stat}</span></p>
+          <p><span class="stat" id="atk-stat">ATK</span><span>${poke.stats[2].base_stat}</span></p>
+          <p><span class="stat" id="def-stat">DEF</span>${poke.stats[3].base_stat}</span></p>
+          <p><span class="stat" id="spa-stat">SpA</span>${poke.stats[4].base_stat}</span></p>
+          <p><span class="stat" id="spd-stat">SpD</span>${poke.stats[5].base_stat}</span></p>
+          <p><span class="stat"id="tot-stat">TOT</span>${pokeStatsTotal}</span></p> 
             </div>
           </div>
           </div>`
@@ -245,12 +245,12 @@ fetchPokemons()
         </div>
         <div class="stats-title"><h4>Stats</h4>
           <div class="stats">
-          <p><span id="hp-stat">HP</span><span>${poke.stats[1].base_stat}</span></p>
-          <p id="atk-stat"><span>ATK</span><span>${poke.stats[2].base_stat}</span></p>
-          <p id="def-stat">DEF<span>${poke.stats[3].base_stat}</span></p>
-          <p id="spa-stat">SpA<span>${poke.stats[4].base_stat}</span></p>
-          <p id="spd-stat">SpD<span>${poke.stats[5].base_stat}</span></p>
-          <p id="tot-stat">TOT<span>${pokeStatsTotal}</span></p>  
+              <p><span class="stat" id="hp-stat">HP</span><span>${poke.stats[1].base_stat}</span></p>
+              <p><span class="stat" id="atk-stat">ATK</span><span>${poke.stats[2].base_stat}</span></p>
+              <p><span class="stat" id="def-stat">DEF</span>${poke.stats[3].base_stat}</span></p>
+              <p><span class="stat" id="spa-stat">SpA</span>${poke.stats[4].base_stat}</span></p>
+              <p><span class="stat" id="spd-stat">SpD</span>${poke.stats[5].base_stat}</span></p>
+              <p><span class="stat" id="tot-stat">TOT</span>${pokeStatsTotal}</span></p> 
           </div>
           </div>`
           } else {
@@ -277,12 +277,12 @@ fetchPokemons()
           </div>
           <div class="stats-title"><h4>Stats</h4>
             <div class="stats">
-              <p><span id="hp-stat">HP</span><span>${poke.stats[1].base_stat}</span></p>
-              <p><span id="atk-stat">ATK</span><span>${poke.stats[2].base_stat}</span></p>
-              <p><span id="def-stat">DEF</span>${poke.stats[3].base_stat}</span></p>
-              <p><span id="spa-stat">SpA</span>${poke.stats[4].base_stat}</span></p>
-              <p><span id="spd-stat">SpD</span>${poke.stats[5].base_stat}</span></p>
-              <p><span id="tot-stat">TOT</span>${pokeStatsTotal}</span></p>  
+              <p><span class="stat" id="hp-stat">HP</span><span>${poke.stats[1].base_stat}</span></p>
+              <p><span class="stat" id="atk-stat">ATK</span><span>${poke.stats[2].base_stat}</span></p>
+              <p><span class="stat" id="def-stat">DEF</span>${poke.stats[3].base_stat}</span></p>
+              <p><span class="stat" id="spa-stat">SpA</span>${poke.stats[4].base_stat}</span></p>
+              <p><span class="stat" id="spd-stat">SpD</span>${poke.stats[5].base_stat}</span></p>
+              <p><span class="stat" id="tot-stat">TOT</span>${pokeStatsTotal}</span></p>  
             </div>
           </div>
           </div>`
