@@ -152,6 +152,7 @@ fetchPokemons()
 
   card.addEventListener("click", () => {
     createAside(poke)
+    
   })
 
   const getPokemonEntry = async (pokemon) => {
