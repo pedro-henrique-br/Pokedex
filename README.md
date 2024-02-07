@@ -2,10 +2,7 @@
 
 <a href="https://pokedex-five-nu-78.vercel.app/">Pokedex Live</a>
 
-
-<img src="" alt="Exemplo imagem">
-
-> Projeto feito para pratica.
+> Made for practice.
 
 ### Ajustes e melhorias
 
