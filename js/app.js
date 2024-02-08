@@ -2,7 +2,7 @@ const searchPokemonInput = document.getElementById("search-pokemon")
 const searchPokemonButton = document.getElementById("lupa-img")
 const pokemonCardContainer = document.getElementById("card-container")
 const aside = document.getElementById("aside")
-const closeBtn = document.getElementById("close-icon")
+const closeBtn = document.querySelector("#close-icon img")
 const asideInfo = document.getElementsByClassName("aside-info")
 const body = document.getElementsByTagName("body")
 
