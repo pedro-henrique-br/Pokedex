@@ -1,10 +1,10 @@
 const searchPokemonInput = document.getElementById("search-pokemon")
-const searchPokemonButton = document.getElementById("lupa-img")
 const pokemonCardContainer = document.getElementById("card-container")
 const aside = document.getElementById("aside")
 const closeBtn = document.querySelector("#close-icon img")
 const asideInfo = document.getElementsByClassName("aside-info")
 const body = document.getElementsByTagName("body")
+const pokeballImg = document.getElementById("pokeball-img")
 
 const typeColors = {
   normal: '#BCBCAC',
@@ -186,6 +186,7 @@ fetchPokemons()
           searchNav.style.display = "none"
           document.body.style.background = backgroundColor
           pokemonCardContainer.style.visibility = "hidden"
+          pokeballImg.style.display = "none"
       }, 100)
       
       const asideContainer = document.createElement("div")
@@ -298,6 +299,7 @@ fetchPokemons()
         document.body.style.background = ""
         searchNav.style.display = "flex"
         pokemonCardContainer.style.visibility = "visible"
+        pokeballImg.style.display = "flex"
       })
     }
   }  
