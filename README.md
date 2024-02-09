@@ -11,7 +11,8 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Imprimir todos os pokemons
 - [x] busca de pokemons funcional
 - [x] info do pokemon selecionado
-- [] Responsividade 
+- [x] Responsividade 
+- [] Corrigir o input de pesquisa 
 
 ## 🚀 Instalando <Pokedex>
 
