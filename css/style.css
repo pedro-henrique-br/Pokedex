@@ -17,7 +17,7 @@ body {
 
 #pokeball-img {
   position: fixed;
-  height: 900px;
+  height: 1100px;
   top: -80px;
   left: -500px;
 }
@@ -321,6 +321,10 @@ body {
   
   .search-pokemon {
     width: 53rem;
+  }
+
+  #pokeball-img {
+    height: 800px;
   }
 }
 

@@ -33,13 +33,30 @@ const mainTypes = Object.keys(typeColors)
 let maxIndex = 30
 let currentlyShowingAmount = 0
 
-const getPokemons = async (id) => {
+async function getPokemons (id) {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`
   const response = await fetch(url)
   const data = await response.json()
   createPokemonCard(data)
-  return data
 }
+
+async function getAllPokemons () {
+  const url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000'`
+  const response = await fetch(url)
+  const data = await response.json()
+  const pokemons = [data.results]
+  // pokemons.forEach((pokemon) => {
+  //   for(x = 0; 999 >= x; x++){
+  //   let pokemonName = pokemon[x].name
+  //   return pokemonName
+  // }
+  // return pokemons
+  // });
+  return pokemons
+}
+
+const data = getAllPokemons()
+console.log(data)
 
 async function fetchPokemons (index) {
   if(currentlyShowingAmount <= index){
@@ -81,22 +98,24 @@ function addNewScrollPokemon() {
 
 // Search
 
-searchPokemonInput.addEventListener("input", () => {
-  const pokemonInputValue = searchPokemonInput.value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() /* fix replace to receive caracteres */
-  if(pokemonInputValue === ""){
-    pokemonCardContainer.innerHTML = ""
-    fetchPokemons()
-    maxIndex = 29
-  } else {
-    pokemonCardContainer.innerHTML = ""
-    currentlyShowingAmount = 0
-    maxIndex = 29
-    getPokemons(pokemonInputValue)
-}})
+searchPokemonInput.addEventListener("input", async ()  => {
+  const pokemonInputValue = searchPokemonInput.value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  console.log(pokemonInputValue)
 
+  const data = await getAllPokemons()
+  const pokemons = data.forEach((pokemon) => {
+    for(x = 0; 999 >= x; x++){
+    let pokemonName = pokemon[x].name
+    return pokemonName
+  }
+  });
+
+  console.log(pokemons)
+});
+  
 fetchPokemons()
   
-  function createPokemonCard (poke) {
+  async function createPokemonCard (poke) {
   const card = document.createElement("div")
   
   card.classList.add("pokemon-card")
