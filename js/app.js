@@ -38,6 +38,7 @@ const getPokemons = async (id) => {
   const response = await fetch(url)
   const data = await response.json()
   createPokemonCard(data)
+  { pokemonName : data.forms[0].name }
   return data
 }
 
@@ -81,8 +82,12 @@ function addNewScrollPokemon() {
 
 // Search
 
-searchPokemonInput.addEventListener("input", () => {
-  const pokemonInputValue = searchPokemonInput.value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() /* fix replace to receive caracteres */
+searchPokemonInput.addEventListener("input", (e) => {
+  let pokemonInputValue = e.target.value.toLowerCase()
+  getPokemons()
+  
+  const isVisible = getPokemons(pokemonInputValue)
+
   if(pokemonInputValue === ""){
     pokemonCardContainer.innerHTML = ""
     fetchPokemons()
@@ -91,7 +96,7 @@ searchPokemonInput.addEventListener("input", () => {
     pokemonCardContainer.innerHTML = ""
     currentlyShowingAmount = 0
     maxIndex = 29
-    getPokemons(pokemonInputValue)
+    getPokemons(isVisible)
 }})
 
 fetchPokemons()
@@ -153,7 +158,9 @@ fetchPokemons()
   card.addEventListener("click", () => {
     createAside(poke)
     
+    return { name: pokemonName, element : card}
   })
+  
 
   const getPokemonEntry = async (pokemon) => {
       const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
