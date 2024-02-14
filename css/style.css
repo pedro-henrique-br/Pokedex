@@ -1,5 +1,4 @@
-*
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,18 +11,18 @@ body {
   display: flex;
   font-family: Rubik;
   overflow-x: hidden;
-  background: #f4f9ffb9;
+  background: #f8fdffb9;
 }
 
 #pokeball-img {
-  display: none;
   position: fixed;
-  height: 900px;
-  right: 1500px;
-  top: -238px;
+  height: 1100px;
+  top: -80px;
+  left: -500px;
 }
 
 .nav {
+  position: relative;
   margin-top: 4rem;
   align-items: center;
 }
@@ -32,7 +31,7 @@ body {
   display: flex;
   width: 1160px;
   height: 80px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 26px;
   border: none;
   font-size: 1.2rem;
@@ -189,14 +188,16 @@ body {
   margin: 20px 0px 20px 0px;
 }
 
-.Height, .weight {
+.Height,
+.weight {
   margin: 5px;
   align-items: center;
   flex-direction: column;
   display: flex;
 }
 
-.Height p, .weight p {
+.Height p,
+.weight p {
   justify-content: center;
   align-items: center;
   display: flex;
@@ -209,7 +210,7 @@ body {
 
 .aside-info .abilities {
   display: flex;
-  margin-top: 5px ;
+  margin-top: 5px;
 }
 
 .aside-info .abilities p {
@@ -230,7 +231,7 @@ body {
   margin-right: 15px;
   width: 40px;
   height: 60px;
-  background:  #92929232;
+  background: #92929232;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -276,7 +277,7 @@ body {
   background: rgba(0, 47, 255, 0.719);
 }
 
-#close-icon img{
+#close-icon img {
   cursor: pointer;
 }
 
@@ -313,48 +314,33 @@ body {
   animation-name: aside;
 }
 
-
 @media screen and (max-width: 1364px) {
   .nav {
     margin-top: 2rem;
   }
-  
-  .search-nav {
-    width: 53rem;
-  }
-  
+
   .search-pokemon {
     width: 53rem;
+  }
+
+  #pokeball-img {
+    height: 800px;
   }
 }
 
 @media screen and (max-width: 1203px) {
-  .search-nav {
-    width: 40rem;
-  }
-  
   .search-pokemon {
     width: 40rem;
   }
-  
 }
 
 @media screen and (max-width: 600px) {
-  .search-nav {
-    width: 27rem;
-  }
-  
   .search-pokemon {
     width: 27rem;
   }
- 
 }
-  
+
 @media screen and (max-width: 528px) {
-  .search-nav {
-    width: 27rem;
-  }
-  
   .search-pokemon {
     width: 27rem;
   }
@@ -362,44 +348,68 @@ body {
   .aside-info #pokemon-entry {
     max-width: 350px;
   }
-  
-  .Height p, .weight p {
+
+  .Height p,
+  .weight p {
     width: 200px;
   }
 
   .aside-info .abilities p {
     width: 200px;
   }
-  
 }
 
-@media screen and (max-width: 474px) {
-  .search-nav {
-    width: 23rem;
-  }
-  
+@media screen and (max-width: 454px) {
   .search-pokemon {
     width: 23rem;
+  }
+
+  #pokeball-img {
+    height: 850px;
+  }
+
+  .aside-info #pokemon-entry {
+    max-width: 360px;
+  }
+
+  .Height p,
+  .weight p {
+    width: 180px;
+  }
+
+  .aside-info .abilities p {
+    width: 180px;
   }
 }
 
 @media screen and (max-width: 375px) {
   .search-nav {
-    width: 20rem;
-  }
-  
-  .search-pokemon {
-    width: 20rem;
-  }
-  .aside-info #pokemon-entry {
-    max-width: 200px;
+    width: 18rem;
   }
 
-  .Height p, .weight p {
+  .aside-info #pokemon-entry {
+    max-width: 300px;
+  }
+
+  .Height p,
+  .weight p {
     width: 150px;
   }
 
   .aside-info .abilities p {
     width: 150px;
   }
+
+  #pokeball-img {
+    top: -40px;
+    height: 800px;
+  }
+
+  .aside-info .stats p {
+    margin-right: 5px;
+  }
+}
+
+.hide {
+  display: none;
 }
