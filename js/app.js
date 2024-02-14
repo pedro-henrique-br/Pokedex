@@ -76,16 +76,24 @@ function addNewScrollPokemon() {
   if (
     window.scrollY + 100 >=
     document.documentElement.scrollHeight -
-      document.documentElement.clientHeight
-  ) {
-    increasesMaxBy(29);
-    updatePokemonList();
+    document.documentElement.clientHeight
+    ) {
+      increasesMaxBy(29);
+      updatePokemonList();
+    }
   }
-}
+  
+  // Search
+  
+  searchPokemonInput.addEventListener("input", () => {
+  const pokemonInputValue = searchPokemonInput.value
+      .replace(/[^a-zA-Z0-9]/g, "")
+      .toLowerCase();
+  })
 
-fetchPokemons();
-
-async function createPokemonCard(poke) {
+  fetchPokemons();
+  
+  async function createPokemonCard(poke) {
   const card = document.createElement("div");
 
   card.classList.add("pokemon-card");
@@ -304,36 +312,4 @@ async function createPokemonCard(poke) {
   };
 }
 
-// async function getAllPokemons(i) {
-//   const url = `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`;
-//   const resp = await fetch(url);
-//   const data = await resp.json();
-//   const pokemons = [data["results"]];
-//   const pokemon = pokemons.map((pokemons) => {
-//     const pokemon = pokemons[i];
-//     return pokemon;
-//   })
-//   return pokemon[0].name
-// }
-
-// function renderPokemons() {
-//   for (i = 0; i < 1000; i++) {
-//     getAllPokemons(i);
-//   }
-// }
-
-// renderPokemons()
-
-// // Search
-
-// searchPokemonInput.addEventListener("input", async (e) => {
-//   const pokemonInputValue = e.target.value
-//     .replace(/[^a-zA-Z0-9]/g, "")
-//     .toLowerCase();
-//     for (i = 0; i < 1000; i++) {
-//       const pokemonName = await getAllPokemons(i);
-//       return pokemonName
-//     }
-//     console.log(pokemonName)  
-// });
 
