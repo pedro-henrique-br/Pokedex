@@ -82,14 +82,57 @@ function addNewScrollPokemon() {
       updatePokemonList();
     }
   }
+
+  async function getAllPokemons(id) {
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  }
+
+  async function fetchAllPokemons () {
+  for(x = 1; 1000 > x; x++){
+    const pokemon = await getAllPokemons(x)
+    const pokemonName = [pokemon.name]
   
+    const pokeName = pokemonName.forEach((pokemonName) => {
+      const name = [pokemonName]
+      searchPokemonInput.addEventListener("input", () => {
+      const pokemonInputValue = searchPokemonInput.value
+          .replace(/[^a-zA-Z0-9]/g, "")
+          .toLowerCase();
+          if(pokemonName.includes(pokemonInputValue)){
+            pokemonCardContainer.innerHTML = ""
+            currentlyShowingAmount = 0
+            axIndex = 0
+            console.log(pokemonName)
+            getPokemons(name)
+          } 
+          else if (!pokemonName.includes(pokemonInputValue)){
+            currentlyShowingAmount = 0
+            maxIndex = 0
+            console.log("não tem")
+            pokemonCardContainer.innerHTML = ""
+          } 
+          else if (pokemonInputValue === "") {
+            pokemonCardContainer.innerHTML = ""
+          } 
+          else {
+            currentlyShowingAmount = 0
+            maxIndex = 30
+            fetchAllPokemons()
+            pokemonCardContainer.innerHTML = ""
+          }
+      })
+    })
+    
+  }}
+
+ 
+  fetchAllPokemons()
+
   // Search
   
-  searchPokemonInput.addEventListener("input", () => {
-  const pokemonInputValue = searchPokemonInput.value
-      .replace(/[^a-zA-Z0-9]/g, "")
-      .toLowerCase();
-  })
 
   fetchPokemons();
   
