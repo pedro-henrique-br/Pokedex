@@ -90,6 +90,8 @@ function addNewScrollPokemon() {
     return data;
   }
 
+ // Search
+
   async function fetchAllPokemons () {
   for(x = 1; 1000 > x; x++){
     const pokemon = await getAllPokemons(x)
@@ -97,42 +99,38 @@ function addNewScrollPokemon() {
   
     const pokeName = pokemonName.forEach((pokemonName) => {
       const name = [pokemonName]
-      searchPokemonInput.addEventListener("input", () => {
+      searchPokemonInput.addEventListener("input", async () => {
       const pokemonInputValue = searchPokemonInput.value
           .replace(/[^a-zA-Z0-9]/g, "")
           .toLowerCase();
-          if(pokemonName.includes(pokemonInputValue)){
+          if(searchPokemonInput.value == ""){
             pokemonCardContainer.innerHTML = ""
-            currentlyShowingAmount = 0
-            axIndex = 0
-            console.log(pokemonName)
+            maxIndex = 29
+          } 
+          else if (pokemonName.includes(pokemonInputValue)){
+            pokemonCardContainer.innerHTML = ""
             getPokemons(name)
-          } 
-          else if (!pokemonName.includes(pokemonInputValue)){
-            currentlyShowingAmount = 0
-            maxIndex = 0
-            console.log("não tem")
+          } else if (pokemonName.includes(pokemonInputValue) === false){
             pokemonCardContainer.innerHTML = ""
-          } 
-          else if (pokemonInputValue === "") {
-            pokemonCardContainer.innerHTML = ""
-          } 
-          else {
-            currentlyShowingAmount = 0
-            maxIndex = 30
-            fetchAllPokemons()
+          } else {
             pokemonCardContainer.innerHTML = ""
           }
       })
     })
-    
   }}
 
- 
-  fetchAllPokemons()
+  searchPokemonInput.addEventListener("input", () => {
+    const pokemonInputValue = searchPokemonInput.value
+        .replace(/[^a-zA-Z0-9]/g, "")
+        .toLowerCase();
+        if(searchPokemonInput.value == ""){
+          pokemonCardContainer.innerHTML = ""
+          maxIndex = 29
+          currentlyShowingAmount = 0
+          fetchPokemons()
+        }}) 
 
-  // Search
-  
+  fetchAllPokemons()
 
   fetchPokemons();
   
