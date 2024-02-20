@@ -1,7 +1,3 @@
-# Pokedex
-
-<a href="https://pokedex-five-nu-78.vercel.app/">Pokedex Live</a>
-
 > Made for practice.
 
 ### Ajustes e melhorias
@@ -12,31 +8,14 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] busca de pokemons funcional
 - [x] info do pokemon selecionado
 - [x] Responsividade 
-- [] Corrigir o input de pesquisa 
-
-## 🚀 Instalando <Pokedex>
-
-Para instalar o <Pokedex>, siga estas etapas:
-
-Linux e macOS:
-
-```
-<comando_de_instalação>
-
-```
-
-Windows:
-
-```
-<comando_de_instalação>
-```
+- [x] Corrigir o input de pesquisa 
 
 ## ☕ Usando <Pokedex>
 
 Para usar <nome_do_projeto>, siga estas etapas:
 
 ```
-<exemplo_de_uso>
+git clone https://github.com/pedro-henrique-br/Pokedex
 ```
 
 Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
