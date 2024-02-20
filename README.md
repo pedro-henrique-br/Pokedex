@@ -1,6 +1,6 @@
-> Made for practice.
+<h4>A pokedex made for practice.</h4>
 
-### Ajustes e melhorias
+<h2>Ajustes e melhorias</h2>
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes features:
 
