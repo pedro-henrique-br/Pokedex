@@ -1,5 +1,7 @@
 <h4>A pokedex made for practice.</h4>
 
+<h2><a href="https://pokedex-five-nu-78.vercel.app">Live</a></h2>
+
 <h2>Ajustes e melhorias</h2>
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes features:
